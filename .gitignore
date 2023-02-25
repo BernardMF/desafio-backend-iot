@@ -1,0 +1,8 @@
+# ignore node configs
+node_modules
+
+# vscode folders
+.vscode
+
+# project generated folders
+dist

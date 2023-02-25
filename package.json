@@ -1,0 +1,38 @@
+{
+  "name": "desafio-backend-proiot",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BernardMF/desafio-backend-proiot"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express",
+    "iot",
+    "typescript",
+    "mongodb"
+  ],
+  "author": "Bernardo Martins",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.4",
+    "source-map-support": "^0.5.21",
+    "typescript": "^4.9.5"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "printWidth": 120
+  }
+}
