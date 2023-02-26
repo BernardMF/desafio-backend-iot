@@ -6,3 +6,6 @@ node_modules
 
 # project generated folders
 dist
+
+# Test coverage
+coverage
