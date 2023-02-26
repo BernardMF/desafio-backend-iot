@@ -1,16 +1,11 @@
-import { Request, Response, Router } from 'express'
+import { Router } from 'express'
+import { createDevice, getDevice, getDeviceById } from './devices.controller'
 const router = Router()
 
-router.post('/', (req: Request, res: Response) => {
-  res.send('Success creating a new device')
-})
+router.post('/', createDevice)
 
-router.get('/', (req: Request, res: Response) => {
-  res.send('List of devices available')
-})
+router.get('/', getDevice)
 
-router.get('/:id', (req: Request, res: Response) => {
-  res.send(`Info on device with id: {${req.params.id}}`)
-})
+router.get('/:id', getDeviceById)
 
 export const devicesRouter = router
