@@ -2,13 +2,13 @@ import mongoose from 'mongoose'
 
 const deviceSchema = new mongoose.Schema(
   {
-    name: String,
+    name: { type: String, required: true },
     description: String,
-    topic: String
+    topic: { type: String, required: true }
   },
   {
     timestamps: true
   }
 )
 
-export const deviceModel = mongoose.model('Device', deviceSchema)
+export const deviceModel = mongoose.model(process.env.DB_NAME, deviceSchema, process.env.DEVICES_TABLE)
