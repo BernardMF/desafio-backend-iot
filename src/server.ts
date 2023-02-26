@@ -1,10 +1,12 @@
-import express, { Request, Response } from 'express'
 import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
 import cors from 'cors'
+import connectDB from './repositories/database/connectDB'
 import { devicesRouter } from './devices/devices.routes'
 
-dotenv.config()
 const port = process.env.PORT || 8888
+connectDB()
 
 const app = express()
 app.use(cors())
