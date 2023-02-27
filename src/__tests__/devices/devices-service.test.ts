@@ -1,5 +1,5 @@
-import { validateBody, saveDevice } from '../../devices/create-devices.service'
-import * as m from '../__mocks__/devices/create-devices.mock'
+import { validateBody, saveDevice } from '../../devices/devices.service'
+import * as m from '../__mocks__/devices/devices-service.mock'
 import connectDB from '../../repositories/database/connectDB'
 
 describe('validateBody', () => {
