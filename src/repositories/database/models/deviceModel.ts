@@ -11,4 +11,4 @@ const deviceSchema = new mongoose.Schema(
   }
 )
 
-export const deviceModel = mongoose.model(process.env.DB_NAME, deviceSchema, process.env.DEVICES_TABLE)
+export const DeviceModel = mongoose.model('Device', deviceSchema, process.env.DEVICES_TABLE)
