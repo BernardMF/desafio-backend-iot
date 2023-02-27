@@ -1,17 +1,17 @@
 import {
-  deviceSchemas,
+  createDeviceSchema,
   CreateDeviceType,
   deviceIdSchema,
   DeviceIdType,
   deviceSchema,
   DeviceType
-} from './deviceSchemas'
+} from './createDeviceSchema'
 import { DeviceModel } from '../repositories/database/models/deviceModel'
 import { BadRequest } from 'http-errors'
 
 const schemas = {
-  create: deviceSchemas,
-  query: deviceSchema,
+  create: createDeviceSchema,
+  query: deviceSchema.partial(),
   id: deviceIdSchema
 }
 
@@ -48,5 +48,5 @@ export async function deleteDevice(id: DeviceIdType) {
 
 export async function updateDevice(id: DeviceIdType, body: Partial<CreateDeviceType>) {
   const device = await findDeviceById(id)
-  return device.update(body)
+  return device.updateOne(body)
 }
