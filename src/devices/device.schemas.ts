@@ -1,16 +1,17 @@
 import z from 'zod'
+import { Types } from 'mongoose'
 
-export const createDeviceSchema = z.object({
+export const deviceSchemas = z.object({
   name: z.string(),
   description: z.string(),
   topic: z.string()
 })
 
-export type CreateDeviceType = z.infer<typeof createDeviceSchema>
+export type CreateDeviceType = z.infer<typeof deviceSchemas>
 
 const timestampRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/
 export const deviceSchema = z.object({
-  id: z.string(),
+  id: z.string().transform((value) => new Types.ObjectId(value)),
   name: z.string(),
   description: z.string(),
   topic: z.string(),
