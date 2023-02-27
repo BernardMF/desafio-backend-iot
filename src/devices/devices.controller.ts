@@ -36,7 +36,7 @@ export async function deleteDevice(req: Request, res: Response) {
   try {
     const id: DeviceIdType = service.validateRequest(req.params?.id, 'id')
     await service.deleteDevice(id)
-    res.status(204).json()
+    res.status(204).end()
   } catch (error) {
     res.status(error.status).json(error.message)
   }

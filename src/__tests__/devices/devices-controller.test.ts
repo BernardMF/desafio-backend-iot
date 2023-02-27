@@ -5,7 +5,7 @@ import { getMockReq, getMockRes } from '@jest-mock/express'
 import * as m from '../__mocks__/devices/devices-controller.mock'
 import { saveDevice } from '../../devices/devices.service'
 
-const { res, next, clearMockRes } = getMockRes()
+const { res, clearMockRes } = getMockRes()
 
 describe('Devices Controller', () => {
   beforeAll(async () => {
