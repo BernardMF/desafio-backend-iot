@@ -1,5 +1,5 @@
 import {
-  validateBody,
+  validateRequest,
   saveDevice,
   findDeviceById,
   queryDevices,
@@ -13,7 +13,7 @@ import { Types } from 'mongoose'
 
 describe('validateBody', () => {
   it('should throw an error if the body is invalid', () => {
-    expect(() => validateBody(m.invalidBody, 'create')).toThrow()
+    expect(() => validateRequest(m.invalidBody, 'create')).toThrow()
   })
 })
 

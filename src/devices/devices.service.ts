@@ -6,7 +6,6 @@ import {
   deviceSchema,
   DeviceType
 } from './deviceSchemas'
-import { validateRequestSchema } from '../utils'
 import { DeviceModel } from '../repositories/database/models/deviceModel'
 import { BadRequest } from 'http-errors'
 
@@ -16,8 +15,12 @@ const schemas = {
   id: deviceIdSchema
 }
 
-export function validateBody(body: unknown, type: string): CreateDeviceType {
-  return validateRequestSchema(schemas[type], body)
+export function validateRequest<T>(body: unknown, type: string): T {
+  try {
+    return schemas[type].parse(body)
+  } catch (error) {
+    throw new BadRequest(error)
+  }
 }
 
 export async function saveDevice(body: CreateDeviceType): Promise<any> {
@@ -39,7 +42,7 @@ export async function queryDevices(query: Partial<DeviceType>) {
   return DeviceModel.find(query)
 }
 
-export async function deleteDevice(id: string) {
+export async function deleteDevice(id: DeviceIdType) {
   return DeviceModel.findByIdAndDelete(id)
 }
 
