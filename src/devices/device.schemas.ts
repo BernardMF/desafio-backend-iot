@@ -1,13 +1,13 @@
 import z from 'zod'
 import { Types } from 'mongoose'
 
-export const deviceSchemas = z.object({
+export const createDeviceSchema = z.object({
   name: z.string(),
   description: z.string(),
   topic: z.string()
 })
 
-export type CreateDeviceType = z.infer<typeof deviceSchemas>
+export type CreateDeviceType = z.infer<typeof createDeviceSchema>
 
 export const deviceIdSchema = z.string().transform((value) => new Types.ObjectId(value))
 export type DeviceIdType = z.infer<typeof deviceIdSchema>

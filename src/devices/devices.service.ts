@@ -5,7 +5,7 @@ import {
   DeviceIdType,
   deviceSchema,
   DeviceType
-} from './createDeviceSchema'
+} from './device.schemas'
 import { DeviceModel } from '../repositories/database/models/deviceModel'
 import { BadRequest } from 'http-errors'
 
