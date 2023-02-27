@@ -1,16 +1,23 @@
-import { createDeviceSchema, CreateDeviceType, deviceSchema, DeviceType } from './schemas/create-device.schema'
+import {
+  deviceSchemas,
+  CreateDeviceType,
+  deviceIdSchema,
+  DeviceIdType,
+  deviceSchema,
+  DeviceType
+} from './deviceSchemas'
 import { validateRequestSchema } from '../utils'
 import { DeviceModel } from '../repositories/database/models/deviceModel'
 import { BadRequest } from 'http-errors'
-import { Types } from 'mongoose'
 
 const schemas = {
-  create: createDeviceSchema,
-  query: deviceSchema
+  create: deviceSchemas,
+  query: deviceSchema,
+  id: deviceIdSchema
 }
 
-export function validateBody(body: unknown, caller: string): CreateDeviceType {
-  return validateRequestSchema(schemas[caller], body)
+export function validateBody(body: unknown, type: string): CreateDeviceType {
+  return validateRequestSchema(schemas[type], body)
 }
 
 export async function saveDevice(body: CreateDeviceType): Promise<any> {
@@ -19,7 +26,7 @@ export async function saveDevice(body: CreateDeviceType): Promise<any> {
   return device.save()
 }
 
-export async function findDeviceById(id: Types.ObjectId): Promise<any> {
+export async function findDeviceById(id: DeviceIdType): Promise<any> {
   const device = await DeviceModel.findById(id)
   console.debug('device found', device)
   if (!device) {
@@ -36,7 +43,7 @@ export async function deleteDevice(id: string) {
   return DeviceModel.findByIdAndDelete(id)
 }
 
-export async function updateDevice(id: Types.ObjectId, body: Partial<CreateDeviceType>) {
+export async function updateDevice(id: DeviceIdType, body: Partial<CreateDeviceType>) {
   const device = await findDeviceById(id)
   return device.update(body)
 }

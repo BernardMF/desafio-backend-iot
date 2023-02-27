@@ -9,9 +9,12 @@ export const deviceSchemas = z.object({
 
 export type CreateDeviceType = z.infer<typeof deviceSchemas>
 
+export const deviceIdSchema = z.string().transform((value) => new Types.ObjectId(value))
+export type DeviceIdType = z.infer<typeof deviceIdSchema>
+
 const timestampRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$/
 export const deviceSchema = z.object({
-  id: z.string().transform((value) => new Types.ObjectId(value)),
+  id: deviceIdSchema,
   name: z.string(),
   description: z.string(),
   topic: z.string(),
