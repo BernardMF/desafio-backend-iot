@@ -22,7 +22,7 @@ describe('Devices CRUD Operations', () => {
     process.env.PORT = '8888'
     process.env.DB_URL = 'mongodb://localhost:27017/test-db'
     process.env.DB_NAME = 'test-db'
-    process.env.DEVICES_TABLE = 'test-table'
+    process.env.DEVICES_TABLE = 'devices-service-test'
     await connectDB()
   })
   afterAll(async () => {
