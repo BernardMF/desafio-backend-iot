@@ -1,0 +1,11 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "verbose": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": ["<rootDir>/**/*.ts"],
+  "rootDir": "./src",
+  "coveragePathIgnorePatterns": ["<rootDir/__tests__/*", "<rootDir>/node_modules/*"],
+  "testPathIgnorePatterns": ["__mocks__"],
+  "roots": ["<rootDir>/__tests__"]
+}
